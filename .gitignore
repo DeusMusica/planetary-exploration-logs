@@ -132,3 +132,11 @@ dist
 /.vs/PlanetaryExplorationLogs.API/FileContentIndex/96e96d03-9cd9-4ac3-a063-4321baf390c5.vsidx
 /PlanetaryExplorationLogs.API/obj/Debug/net8.0/PlanetaryExplorationLogs.API.sourcelink.json
 /.vs/PlanetaryExplorationLogs.API/v17/.suo
+
+# Ignore build directories
+bin/debug/net8.0
+obj/debug/net8.0
+
+# Ignore specific subdirectories generated for different frameworks
+**/bin/debug/net8.0
+**/obj/
