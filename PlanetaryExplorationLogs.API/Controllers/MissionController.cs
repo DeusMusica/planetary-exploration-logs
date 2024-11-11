@@ -2,6 +2,8 @@
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO.Missions;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Missions.CreateMission;
+using PlanetaryExplorationLogs.API.Requests.Commands.Missions.UpdateMission;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissionById;
 using PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
@@ -36,18 +38,35 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // POST: api/mission
         [HttpPost]
-        public async Task<ActionResult<RequestResult<int>>> CreateMission([FromBody] Mission mission)
+        public async Task<ActionResult<RequestResult<int>>> CreateMission([FromBody] CreateMissionDto createDto)
         {
-            // Create a new mission.
-            return StatusCode(501); // Not Implemented
+            var mission = new Mission
+            {
+                Name = createDto.Name,
+                Date = createDto.Date,
+                PlanetId = createDto.PlanetId,
+                Description = createDto.Description
+            };
+
+            var cmd = new CreateMission_Command(_context, mission);
+            return await cmd.ExecuteAsync();
         }
 
-        // PUT: api/mission
-        [HttpPut]
-        public async Task<ActionResult<RequestResult<int>>> UpdateMission([FromBody] Mission mission)
+        // PUT: api/mission/{id}
+        [HttpPut("{id}")]
+        public async Task<ActionResult<RequestResult<int>>> UpdateMission(int id, [FromBody] UpdateMissionDto updateDto)
         {
-            // Update an existing mission.
-            return StatusCode(501); // Not Implemented
+            var mission = new Mission
+            {
+                Id = id,
+                Name = updateDto.Name,
+                Date = updateDto.Date,
+                PlanetId = updateDto.PlanetId,
+                Description = updateDto.Description,
+            }; 
+
+            var cmd = new UpdateMission_Command(_context, id, mission);
+            return await cmd.ExecuteAsync();
         }
 
         // DELETE: api/mission/{id}
