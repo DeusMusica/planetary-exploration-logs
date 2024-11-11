@@ -2,6 +2,7 @@
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.DeleteDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.UpdateDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes;
@@ -54,12 +55,12 @@ namespace PlanetaryExplorationLogs.API.Controllers
             return await cmd.ExecuteAsync();
         }
 
-            // DELETE: api/discovery/{id}
-            [HttpDelete("{id}")]
-        public IActionResult DeleteDiscovery(int id)
+        // DELETE: api/discovery/{id}
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<RequestResult<int>>> DeleteDiscovery(int id)
         {
-            // Delete a discovery.
-            return StatusCode(501); // Not Implemented
+            var cmd = new DeleteDiscovery_Command(_context, id);
+            return await cmd.ExecuteAsync();
         }
     }
 }
