@@ -2,6 +2,7 @@
 using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.Models;
+using PlanetaryExplorationLogs.API.Requests.Commands.Discoveries.UpdateDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery;
 using PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscoveryTypes;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
@@ -36,14 +37,25 @@ namespace PlanetaryExplorationLogs.API.Controllers
 
         // PUT: api/discovery/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateDiscovery(int id)
+        public async Task<ActionResult<RequestResult<int>>> UpdateDiscovery(int id, [FromBody] UpdateDiscoveryDto updateDto)
         {
-            // Update an existing discovery.
-            return StatusCode(501); // Not Implemented
+            // Convert DTO to Discovery object, maintaining existing values
+            var discovery = new Discovery
+            {
+                Id = id,
+                Name = updateDto.Name ?? "",
+                Description = updateDto.Description ?? "",
+                Location = updateDto.Location ?? "",
+                MissionId = updateDto.MissionId ?? 0,
+                DiscoveryTypeId = updateDto.DiscoveryTypeId ?? 0
+            };
+
+            var cmd = new UpdateDiscovery_Command(_context, id, discovery);
+            return await cmd.ExecuteAsync();
         }
 
-        // DELETE: api/discovery/{id}
-        [HttpDelete("{id}")]
+            // DELETE: api/discovery/{id}
+            [HttpDelete("{id}")]
         public IActionResult DeleteDiscovery(int id)
         {
             // Delete a discovery.
