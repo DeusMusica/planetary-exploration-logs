@@ -179,3 +179,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/PlanetaryExplorationLogs.API/obj/Debug/net8.0/PlanetaryExplorationLogs.API.AssemblyInfo.cs
+/PlanetaryExplorationLogs.API/obj/Debug/net8.0/PlanetaryExplorationLogs.API.csproj.FileListAbsolute.txt
