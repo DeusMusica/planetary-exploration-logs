@@ -6,6 +6,8 @@ using PlanetaryExplorationLogs.API.Data.Models;
 using System.Net;
 using PlanetaryExplorationLogs.API.Data.DTO;
 using PlanetaryExplorationLogs.API.Data.DTO.Missions;
+using PlanetaryExplorationLogs.API.Data.DTO.Planets;
+using PlanetaryExplorationLogs.API.Data.DTO.Discovery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions
 {
@@ -55,14 +57,11 @@ namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions
                 })
                 .ToListAsync();
 
-            // Add debug info to the message
-            var debugInfo = string.Join(", ", missionCounts.Select(m => $"Mission {m.MissionId}: {m.DiscoveryCount} discoveries"));
-
             return new RequestResult<List<MissionListItemDto>>
             {
                 Data = missions,
                 StatusCode = HttpStatusCode.OK,
-                Message = $"Missions retrieved successfully. Debug info: {debugInfo}"
+                Message = $"Missions retrieved successfully."
             };
         }
     }
