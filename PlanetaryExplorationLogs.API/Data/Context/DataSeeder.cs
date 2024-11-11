@@ -56,7 +56,7 @@ namespace PlanetaryExplorationLogs.API.Data.Context
                 await _context.SaveChangesAsync();
             }
 
-            if(!await _context.DiscoveryTypes.AnyAsync())
+            if (!await _context.DiscoveryTypes.AnyAsync())
             {
                 await _context.DiscoveryTypes.AddRangeAsync(
                     new DiscoveryType
@@ -137,52 +137,142 @@ namespace PlanetaryExplorationLogs.API.Data.Context
             if (!await _context.Discoveries.AnyAsync())
             {
                 await _context.Discoveries.AddRangeAsync(
-                    new Discovery
-                    {
-                        Id = 1,
-                        MissionId = 1, // Terra Nova Geological Survey
-                        DiscoveryTypeId = 1, // Geological
-                        Name = "Rich Iron Deposit",
-                        Description = "A massive deposit of iron ore discovered beneath a tectonic fault line.",
-                        Location = "Mount Eris, Terra Nova"
-                    },
-                    new Discovery
-                    {
-                        Id = 2,
-                        MissionId = 2, // Xenon Prime Atmospheric Expedition
-                        DiscoveryTypeId = 4, // Atmospheric
-                        Name = "Supercell Storm Formation",
-                        Description = "Observed a record-breaking supercell storm, with wind speeds exceeding 400 km/h.",
-                        Location = "Southern Hemisphere, Xenon Prime"
-                    },
-                    new Discovery
-                    {
-                        Id = 3,
-                        MissionId = 3, // Glaciera Ice Core Drilling
-                        DiscoveryTypeId = 2, // Biological
-                        Name = "Ancient Microbial Life",
-                        Description = "Discovered well-preserved microorganisms in ice cores, dating back over 100,000 years.",
-                        Location = "North Ice Cap, Glaciera"
-                    },
-                    new Discovery
-                    {
-                        Id = 4,
-                        MissionId = 4, // Dwarfia Desert Exploration
-                        DiscoveryTypeId = 1, // Geological
-                        Name = "Silicon Dunes",
-                        Description = "Vast dunes of silicon-based sand, possibly formed by ancient volcanic activity.",
-                        Location = "Great Dwarfian Desert, Dwarfia"
-                    },
-                    new Discovery
-                    {
-                        Id = 5,
-                        MissionId = 5, // Terra Nova Biological Census
-                        DiscoveryTypeId = 2, // Biological
-                        Name = "New Species of Aquatic Flora",
-                        Description = "Identified a new species of bioluminescent algae thriving in the deep ocean trenches.",
-                        Location = "Trench of Light, Terra Nova"
-                    }
-                );
+                   // Terra Nova Geological Survey discoveries
+                   new Discovery
+                   {
+                       Id = 1,
+                       MissionId = 1,
+                       DiscoveryTypeId = 1, // Geological
+                       Name = "Rich Iron Deposit",
+                       Description = "A massive deposit of iron ore discovered beneath a tectonic fault line.",
+                       Location = "Mount Eris, Terra Nova"
+                   },
+                   new Discovery
+                   {
+                       Id = 2,
+                       MissionId = 1,
+                       DiscoveryTypeId = 1, // Geological
+                       Name = "Active Volcanic Vent",
+                       Description = "Discovery of an active geothermal vent system with unique mineral formations.",
+                       Location = "Vulcan Valley, Terra Nova"
+                   },
+                   new Discovery
+                   {
+                       Id = 3,
+                       MissionId = 1,
+                       DiscoveryTypeId = 3, // Technological
+                       Name = "Ancient Mining Site",
+                       Description = "Evidence of previous mining operations, possibly from an unknown civilization.",
+                       Location = "Deep Canyon Delta, Terra Nova"
+                   },
+
+                   // Xenon Prime Atmospheric Expedition discoveries
+                   new Discovery
+                   {
+                       Id = 4,
+                       MissionId = 2,
+                       DiscoveryTypeId = 4, // Atmospheric
+                       Name = "Supercell Storm Formation",
+                       Description = "Observed a record-breaking supercell storm, with wind speeds exceeding 400 km/h.",
+                       Location = "Southern Hemisphere, Xenon Prime"
+                   },
+                   new Discovery
+                   {
+                       Id = 5,
+                       MissionId = 2,
+                       DiscoveryTypeId = 4, // Atmospheric
+                       Name = "Metallic Cloud Layer",
+                       Description = "Identified a unique layer of metallic compounds in the upper atmosphere.",
+                       Location = "Equatorial Band, Xenon Prime"
+                   },
+                   new Discovery
+                   {
+                       Id = 6,
+                       MissionId = 2,
+                       DiscoveryTypeId = 2, // Biological
+                       Name = "Atmospheric Microorganisms",
+                       Description = "Detection of microscopic life forms surviving in the upper atmosphere.",
+                       Location = "Upper Troposphere, Xenon Prime"
+                   },
+
+                   // Glaciera Ice Core Drilling discoveries
+                   new Discovery
+                   {
+                       Id = 7,
+                       MissionId = 3,
+                       DiscoveryTypeId = 2, // Biological
+                       Name = "Ancient Microbial Life",
+                       Description = "Discovered well-preserved microorganisms in ice cores, dating back over 100,000 years.",
+                       Location = "North Ice Cap, Glaciera"
+                   },
+                   new Discovery
+                   {
+                       Id = 8,
+                       MissionId = 3,
+                       DiscoveryTypeId = 1, // Geological
+                       Name = "Subglacial Lake Network",
+                       Description = "Mapped an extensive network of interconnected liquid water lakes beneath the ice.",
+                       Location = "Central Ice Sheet, Glaciera"
+                   },
+                   new Discovery
+                   {
+                       Id = 9,
+                       MissionId = 3,
+                       DiscoveryTypeId = 3, // Technological
+                       Name = "Preserved Artifacts",
+                       Description = "Collection of preserved tools and devices found in deep ice layers.",
+                       Location = "Eastern Glacier Zone, Glaciera"
+                   },
+
+                   // Dwarfia Desert Exploration discoveries
+                   new Discovery
+                   {
+                       Id = 10,
+                       MissionId = 4,
+                       DiscoveryTypeId = 1, // Geological
+                       Name = "Silicon Dunes",
+                       Description = "Vast dunes of silicon-based sand, possibly formed by ancient volcanic activity.",
+                       Location = "Great Dwarfian Desert, Dwarfia"
+                   },
+                   new Discovery
+                   {
+                       Id = 11,
+                       MissionId = 4,
+                       DiscoveryTypeId = 4, // Atmospheric
+                       Name = "Dust Devil Phenomena",
+                       Description = "Unique patterns of electrified dust devils carrying rare mineral particles.",
+                       Location = "Central Desert Plain, Dwarfia"
+                   },
+
+                   // Terra Nova Biological Census discoveries
+                   new Discovery
+                   {
+                       Id = 12,
+                       MissionId = 5,
+                       DiscoveryTypeId = 2, // Biological
+                       Name = "New Species of Aquatic Flora",
+                       Description = "Identified a new species of bioluminescent algae thriving in the deep ocean trenches.",
+                       Location = "Trench of Light, Terra Nova"
+                   },
+                   new Discovery
+                   {
+                       Id = 13,
+                       MissionId = 5,
+                       DiscoveryTypeId = 2, // Biological
+                       Name = "Mountain Dwelling Creatures",
+                       Description = "Discovery of highly adapted vertebrates living in high-altitude mountain caves.",
+                       Location = "Peak Range, Terra Nova"
+                   },
+                   new Discovery
+                   {
+                       Id = 14,
+                       MissionId = 5,
+                       DiscoveryTypeId = 3, // Technological
+                       Name = "Bioengineered Plant Species",
+                       Description = "Evidence of artificially modified plant life, suggesting previous colonization attempts.",
+                       Location = "Coastal Research Zone, Terra Nova"
+                   }
+               );
                 await _context.SaveChangesAsync();
             }
         }

@@ -1,8 +1,8 @@
-﻿using PlanetaryExplorationLogs.API.Data.DTO;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using PlanetaryExplorationLogs.API.Data.Context;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
+using PlanetaryExplorationLogs.API.Data.DTO.Planets;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Planets.GetPlanetsDropdownList
 {

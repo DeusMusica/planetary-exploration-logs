@@ -5,7 +5,7 @@ using System.Net;
 using PlanetaryExplorationLogs.API.Data.Context;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 using PlanetaryExplorationLogs.API.Data.Models;
-using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Data.DTO.Discovery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Discoveries.GetDiscovery
 {

@@ -1,6 +1,7 @@
-﻿using PlanetaryExplorationLogs.API.Data.Models;
+﻿using PlanetaryExplorationLogs.API.Data.DTO.Missions;
+using PlanetaryExplorationLogs.API.Data.Models;
 
-namespace PlanetaryExplorationLogs.API.Data.DTO
+namespace PlanetaryExplorationLogs.API.Data.DTO.Discovery
 {
     public class DiscoveryDto
     {

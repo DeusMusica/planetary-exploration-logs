@@ -1,5 +1,5 @@
 ﻿using PlanetaryExplorationLogs.API.Data.Context;
-using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Data.DTO.Planets;
 using PlanetaryExplorationLogs.API.Data.Models;
 using PlanetaryExplorationLogs.API.Utility.Patterns;
 using System.Net;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanetaryExplorationLogs.API.Data.Context;
-using PlanetaryExplorationLogs.API.Data.DTO;
+using PlanetaryExplorationLogs.API.Data.DTO.Planets;
 using PlanetaryExplorationLogs.API.Data.Models;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets;
 using PlanetaryExplorationLogs.API.Requests.Commands.Planets.DeletePlanet;

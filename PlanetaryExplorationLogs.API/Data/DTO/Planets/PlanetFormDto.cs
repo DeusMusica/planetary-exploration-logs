@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PlanetaryExplorationLogs.API.Data.DTO
+namespace PlanetaryExplorationLogs.API.Data.DTO.Planets
 {
     public class PlanetFormDto
     {

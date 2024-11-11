@@ -1,4 +1,4 @@
-﻿namespace PlanetaryExplorationLogs.API.Data.DTO
+﻿namespace PlanetaryExplorationLogs.API.Data.DTO.Planets
 {
     public class PlanetDropdownDto
     {
