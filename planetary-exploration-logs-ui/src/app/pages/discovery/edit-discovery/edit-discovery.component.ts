@@ -48,7 +48,6 @@ export class EditDiscoveryComponent implements OnInit {
 
   // Load discovery types for the dropdown
   loadDiscoveryTypes(): void {
-    // Assuming you have a method in your service to fetch discovery types
     this.discoveryService.getTypes().subscribe({
       next: (response) => {
         this.discoveryTypes = response.data;
@@ -64,7 +63,7 @@ export class EditDiscoveryComponent implements OnInit {
   updateDiscovery(): void {
     this.discoveryService.updateDiscovery(this.discoveryId, this.discovery).subscribe({
       next: () => {
-        this.router.navigate(['/mission']); // Navigate back to the mission list page on success
+        this.router.navigate(['/mission']);
       },
       error: (error) => {
         this.errorMessage = 'Error updating discovery';

@@ -36,7 +36,8 @@
             <h4>Discoveries:</h4>
             <ul>
               <li *ngFor="let discovery of mission.discoveries">
-                {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }})
+                {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }}).
+                Type: {{ discovery.discoveryTypeName }}
                 <button class="btn btn-primary btn-sm ms-2" (click)="editDiscoveries(discovery.id)">Edit Discoveries</button>
               </li>
             </ul>

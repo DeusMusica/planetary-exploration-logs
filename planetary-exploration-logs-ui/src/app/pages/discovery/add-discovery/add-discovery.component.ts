@@ -18,7 +18,7 @@ export class AddDiscoveryComponent implements OnInit{
 
   };
   missionId: number = 0;
-  discoveryTypes: any[] = []; // List of discovery types for dropdown
+  discoveryTypes: any[] = [];
   errorMessage: string = '';
 
   constructor(
@@ -32,7 +32,6 @@ export class AddDiscoveryComponent implements OnInit{
     // Get missionId from query parameters
     this.route.queryParams.subscribe(params => {
       this.missionId = +params['missionId'];
-      console.log('Retrieved missionId:', this.missionId); // Debugging: Log the missionId
     });
 
     this.loadDiscoveryTypes(); // Load available discovery types
@@ -54,15 +53,12 @@ export class AddDiscoveryComponent implements OnInit{
 
   // Handle form submission
   addDiscovery(): void {
-    console.log('Adding discovery:', this.newDiscovery); // Debugging: Log the data
     this.missionService.addDiscoveryToMission(this.missionId, this.newDiscovery).subscribe({
       next: (response) => {
-        console.log('Discovery added successfully:', response); // Debugging: Log the response
         this.router.navigate(['/mission']); // Navigate back to the mission list page on success
       },
       error: (error) => {
         this.errorMessage = 'Error adding discovery';
-        console.error('API Error:', error); // Debugging: Log the error
       }
     });
   }

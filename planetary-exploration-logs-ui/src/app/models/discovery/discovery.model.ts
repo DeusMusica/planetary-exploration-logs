@@ -1,5 +1,5 @@
 import { MissionDto } from "../mission/mission-dto.model";
-import { DiscoveryTypeDto } from "./discovery-type-dto.model";
+import { DiscoveryType } from "./discovery-type.model";
 
 export interface Discovery {
     id: number;
@@ -9,6 +9,6 @@ export interface Discovery {
     description: string;
     location: string;
     mission: MissionDto;
-    discoveryType: DiscoveryTypeDto;
+    discoveryType: DiscoveryType;
   }
   

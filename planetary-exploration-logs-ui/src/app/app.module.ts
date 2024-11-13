@@ -8,15 +8,19 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { DiscoveryComponent } from './pages/discovery/discovery.component';
-import { DiscoveryModule } from './pages/discovery/discovery.module';
 import { CreateMissionComponent } from './pages/mission/create-mission/create-mission.component';
 import { AddDiscoveryComponent } from './pages/discovery/add-discovery/add-discovery.component';
+import { EditDiscoveryComponent } from './pages/discovery/edit-discovery/edit-discovery.component';
+import { MissionComponent } from './pages/mission/mission.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddDiscoveryComponent,
+    EditDiscoveryComponent,
+    DiscoveryComponent,
     CreateMissionComponent,
-    AddDiscoveryComponent
+    MissionComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,6 @@ import { AddDiscoveryComponent } from './pages/discovery/add-discovery/add-disco
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    DiscoveryModule,
     RouterModule.forRoot([])
   ],
   providers: [

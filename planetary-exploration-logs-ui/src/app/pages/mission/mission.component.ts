@@ -57,7 +57,6 @@ export class MissionComponent implements OnInit {
     });
   }
 
-// New: Toggle the selected mission details
 toggleMissionDetails(missionId: number): void {
   // Toggle the selected mission ID; close if the same mission is clicked
   this.selectedMissionId = this.selectedMissionId === missionId ? null : missionId;
@@ -67,7 +66,7 @@ toggleMissionDetails(missionId: number): void {
     const selectedMission = this.missions.find(m => m.id === this.selectedMissionId);
     this.selectedPlanet = this.planets.find(p => p.id === selectedMission?.planetId) || null;
   } else {
-    this.selectedPlanet = null; // Clear selected planet if mission is deselected
+    this.selectedPlanet = null;
   }
 }
 

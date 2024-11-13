@@ -68,29 +68,6 @@ export class CreateMissionComponent implements OnInit{
     });
   }
 
-  // Load discovery types for the dropdown
-  loadDiscoveryTypes(): void {
-    this.discoveryService.getTypes().subscribe({
-      next: (response) => {
-        this.discoveryTypes = response.data;
-      },
-      error: (error) => {
-        this.errorMessage = 'Error loading discovery types';
-        console.error(error);
-      }
-    });
-  }
-
-  // Add a new discovery to the list
-  addDiscovery(): void {
-    if (this.newDiscovery.name && this.newDiscovery.discoveryTypeId) {
-      this.discoveries.push({ ...this.newDiscovery });
-      this.newDiscovery = { name: '', description: '', location: '', discoveryTypeId: 0 };
-    } else {
-      this.errorMessage = 'Please provide all required discovery details';
-    }
-  }
-
   // Save the mission
   createMission(): void {
     if (this.newMission.planetId === 0) {

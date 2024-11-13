@@ -5,7 +5,6 @@ import { CreateDiscoveryDto } from '../../models/discovery/create-discovery-dto.
 import { DiscoveryListItemDto } from '../../models/discovery/discovery-list-item-dto.model';
 import { UpdateDiscoveryDto } from '../../models/discovery/update-discovery-dto.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DiscoveryTypeDto } from '../../models/discovery/discovery-type-dto.model';
 import { Discovery } from '../../models/discovery/discovery.model';
 
 @Component({
@@ -13,9 +12,9 @@ import { Discovery } from '../../models/discovery/discovery.model';
   templateUrl: './discovery.component.html',
   styleUrl: './discovery.component.scss'
 })
-export class DiscoveryComponent implements OnInit {
+export class DiscoveryComponent{
   discoveries: DiscoveryListItemDto[] = [];
-  discoveryTypes: DiscoveryTypeDto[] = [];
+  discoveryTypes: DiscoveryType[] = [];
   selectedDiscovery: Discovery | null = null;
   errorMessage: string = '';
 
@@ -23,11 +22,6 @@ export class DiscoveryComponent implements OnInit {
     private discoveryService: DiscoveryService,
     private modalService: NgbModal
   ) {}
-
-  ngOnInit(): void {
-    this.loadDiscoveries();
-    this.loadDiscoveryTypes();
-  }
 
   // Load all discoveries
   loadDiscoveries(): void {
@@ -37,39 +31,6 @@ export class DiscoveryComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = 'Error loading discoveries';
-        console.error(error);
-      }
-    });
-  }
-
-  loadDiscoveryTypes(): void {
-    // Assuming you have a method in your service to fetch discovery types
-    this.discoveryService.getTypes().subscribe({
-      next: (response) => {
-        this.discoveryTypes = response.data;
-      },
-      error: (error) => {
-        this.errorMessage = 'Error loading discovery types';
-        console.error(error);
-      }
-    });
-  }
-
-  // Open the modal for creating a new discovery
-  openCreateModal(content: any): void {
-    this.selectedDiscovery = null; // Reset selected discovery
-    this.modalService.open(content, { ariaLabelledBy: 'modal-create-discovery' });
-  }
-
-  // Open the modal for editing a discovery
-  openEditModal(content: any, discoveryId: number): void {
-    this.discoveryService.getDiscovery(discoveryId).subscribe({
-      next: (response) => {
-        this.selectedDiscovery = response.data;
-        this.modalService.open(content, { ariaLabelledBy: 'modal-edit-discovery' });
-      },
-      error: (error) => {
-        this.errorMessage = 'Error loading discovery details';
         console.error(error);
       }
     });

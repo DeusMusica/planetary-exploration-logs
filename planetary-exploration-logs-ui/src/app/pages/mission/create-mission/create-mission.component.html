@@ -27,25 +27,6 @@
       <textarea id="description" class="form-control" [(ngModel)]="newMission.description" name="description"></textarea>
     </div>
 
-    <hr />
-    <h3>Add Discoveries</h3>
-    <div class="form-group">
-      <input type="text" class="form-control" [(ngModel)]="newDiscovery.name" placeholder="Discovery Name" name="discoveryName" required />
-      <input type="text" class="form-control mt-2" [(ngModel)]="newDiscovery.description" placeholder="Description" name="discoveryDescription" />
-      <input type="text" class="form-control mt-2" [(ngModel)]="newDiscovery.location" placeholder="Location" name="discoveryLocation" />
-      <select class="form-control mt-2" [(ngModel)]="newDiscovery.discoveryTypeId" name="discoveryTypeId" required>
-        <option value="0" disabled>Select Discovery Type</option>
-        <option *ngFor="let type of discoveryTypes" [value]="type.id">{{ type.name }}</option>
-      </select>
-      <button type="button" class="btn btn-primary mt-2" (click)="addDiscovery()">Add Discovery</button>
-    </div>
-
-    <ul class="list-group mt-3">
-      <li class="list-group-item" *ngFor="let discovery of discoveries">
-        {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }})
-      </li>
-    </ul>
-
     <button type="submit" class="btn btn-success mt-3">Create Mission</button>
   </form>
 
