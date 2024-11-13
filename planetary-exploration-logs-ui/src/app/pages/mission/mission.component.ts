@@ -3,9 +3,11 @@ import { ApiResponse } from '../../models/api-response.model';
 import { MissionListItemDto } from '../../models/mission/mission-list-item-dto.model';
 import { MissionService } from '../../services/mission.service';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Planet } from '../../models/planet/planet.model';
 import { PlanetService } from '../../services/planet.service';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../services/api.service';
+import { DiscoveryService } from '../../services/discovery.service';
 
 @Component({
   selector: 'app-mission',
@@ -22,7 +24,7 @@ export class MissionComponent implements OnInit {
   constructor(
     private missionService: MissionService,
     private planetService: PlanetService,
-    private modalService: NgbModal,
+    private discoveryService: DiscoveryService,
     private router: Router
   ) {}
 
@@ -85,6 +87,19 @@ toggleMissionDetails(missionId: number): void {
   editDiscoveries(discoveryId: number): void {
     // Navigate to the edit discovery page, passing the discovery ID as a route parameter
     this.router.navigate(['/discovery/edit', discoveryId]);
+  }
+
+  deleteDiscovery(discoveryId: number): void {
+    if (confirm('Are you sure you want to delete this discovery?')) {
+      this.discoveryService.deleteDiscovery(discoveryId).subscribe({
+        next: () => {
+          const selectedMission = this.missions.find(m => m.id === this.selectedMissionId);
+          if (selectedMission) {
+            selectedMission.discoveries = selectedMission.discoveries.filter(d => d.id !== discoveryId);
+          }
+        }
+      })
+    }
   }
 
   // Method to delete the mission

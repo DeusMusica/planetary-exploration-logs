@@ -39,6 +39,7 @@
                 {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }}).
                 Type: {{ discovery.discoveryTypeName }}
                 <button class="btn btn-primary btn-sm ms-2" (click)="editDiscoveries(discovery.id)">Edit Discoveries</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteDiscovery(discovery.id)">Delete</button>
               </li>
             </ul>
           </div>
