@@ -1,6 +1,5 @@
 ﻿using PlanetaryExplorationLogs.API.Data.Context;
 using PlanetaryExplorationLogs.API.Data.DTO.Missions;
-using PlanetaryExplorationLogs.API.Data.Models;
 using static PlanetaryExplorationLogs.API.Utility.Patterns.CommandQuery;
 
 namespace PlanetaryExplorationLogs.API.Requests.Queries.Missions.GetMissions

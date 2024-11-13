@@ -1,0 +1,134 @@
+<div class="container mt-4">
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Discoveries</h2>
+      <button class="btn btn-primary" (click)="openCreateModal(createModal)">Add New Discovery</button>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- List of Discoveries -->
+    <table class="table table-striped" *ngIf="discoveries.length > 0; else noDiscoveries">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Discovery Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let discovery of discoveries">
+          <td>{{ discovery.name }}</td>
+          <td>{{ discovery.description }}</td>
+          <td>{{ discovery.location }}</td>
+          <td>{{ discovery.discoveryTypeName }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="openEditModal(editModal, discovery.id)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteDiscovery(discovery.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- No Discoveries Message -->
+    <ng-template #noDiscoveries>
+      <p>No discoveries found.</p>
+    </ng-template>
+  
+    <!-- Create Discovery Modal -->
+    <ng-template #createModal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Create New Discovery</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form for Creating a Discovery -->
+        <form (ngSubmit)="createDiscovery(createDiscoveryForm.value)" #createDiscoveryForm="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" name="name" ngModel required />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" name="description" ngModel></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" class="form-control" name="location" ngModel />
+          </div>
+          <div class="mb-3">
+            <label for="discoveryTypeId" class="form-label">Discovery Type</label>
+            <select id="discoveryTypeId" class="form-select" name="discoveryTypeId" ngModel required>
+              <!-- Populate options dynamically if you have discovery types -->
+              <option *ngFor="let type of discoveryTypes" [value]="type.id">{{ type.name }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+        </form>
+      </div>
+    </ng-template>
+  
+    <!-- Edit Discovery Modal -->
+    <ng-template #editModal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Discovery</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form for Editing a Discovery -->
+        <form *ngIf="selectedDiscovery" (ngSubmit)="updateDiscovery(editDiscoveryForm.value)" #editDiscoveryForm="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              name="name"
+              [(ngModel)]="selectedDiscovery.name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              name="description"
+              [(ngModel)]="selectedDiscovery.description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input
+              type="text"
+              id="location"
+              class="form-control"
+              name="location"
+              [(ngModel)]="selectedDiscovery.location"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="discoveryTypeId" class="form-label">Discovery Type</label>
+            <select
+              id="discoveryTypeId"
+              class="form-select"
+              name="discoveryTypeId"
+              [(ngModel)]="selectedDiscovery.discoveryTypeId"
+              required
+            >
+              <option *ngFor="let type of discoveryTypes" [value]="type.id">{{ type.name }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success">Update</button>
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+  

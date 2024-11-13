@@ -18,13 +18,18 @@ builder.Services.AddDbContext<PlanetExplorationDbContext>(options =>
 // Allowing CORS for all origins, headers, and methods so your Angular app can call the API
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy("AllowAllOrigins", builder =>
     {
-        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        builder.AllowAnyOrigin() // Allow requests from any origin
+               .AllowAnyHeader() // Allow any HTTP headers
+               .AllowAnyMethod(); // Allow any HTTP methods (GET, POST, etc.)
     });
 });
 
 var app = builder.Build();
+
+// Apply the CORS policy
+app.UseCors("AllowAllOrigins");
 
 using (var scope = app.Services.CreateScope())
 {

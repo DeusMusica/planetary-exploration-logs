@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h2>Add New Discovery</h2>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+    <form (ngSubmit)="addDiscovery()">
+      <div class="form-group">
+        <label for="name">Discovery Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="newDiscovery.name" name="name" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" class="form-control" [(ngModel)]="newDiscovery.description" name="description"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" class="form-control" [(ngModel)]="newDiscovery.location" name="location" />
+      </div>
+  
+      <div class="form-group">
+        <label for="discoveryType">Discovery Type</label>
+        <select id="discoveryType" class="form-control" [(ngModel)]="newDiscovery.discoveryTypeId" name="discoveryTypeId" required>
+          <option *ngFor="let type of discoveryTypes" [value]="type.id">{{ type.name }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">Add Discovery</button>
+    </form>
+  </div>
+  

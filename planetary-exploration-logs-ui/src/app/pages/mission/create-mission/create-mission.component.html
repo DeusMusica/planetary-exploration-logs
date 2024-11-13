@@ -1,0 +1,86 @@
+<div class="container mt-4">
+  <h2>Create Mission</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="createMission()">
+    <div class="form-group">
+      <label for="name">Mission Name</label>
+      <input type="text" id="name" class="form-control" [(ngModel)]="newMission.name" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" class="form-control" [(ngModel)]="newMission.date" name="date" required />
+    </div>
+
+    <div class="form-group">
+      <label for="planet">Planet</label>
+      <select id="planet" class="form-control" [(ngModel)]="newMission.planetId" name="planetId" required>
+        <option *ngFor="let planet of planets" [value]="planet.id">{{ planet.name }}</option>
+      </select>
+      <button type="button" class="btn btn-secondary mt-2" (click)="openAddPlanetModal(addPlanetModal)">Add Planet</button>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="newMission.description" name="description"></textarea>
+    </div>
+
+    <hr />
+    <h3>Add Discoveries</h3>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="newDiscovery.name" placeholder="Discovery Name" name="discoveryName" required />
+      <input type="text" class="form-control mt-2" [(ngModel)]="newDiscovery.description" placeholder="Description" name="discoveryDescription" />
+      <input type="text" class="form-control mt-2" [(ngModel)]="newDiscovery.location" placeholder="Location" name="discoveryLocation" />
+      <select class="form-control mt-2" [(ngModel)]="newDiscovery.discoveryTypeId" name="discoveryTypeId" required>
+        <option value="0" disabled>Select Discovery Type</option>
+        <option *ngFor="let type of discoveryTypes" [value]="type.id">{{ type.name }}</option>
+      </select>
+      <button type="button" class="btn btn-primary mt-2" (click)="addDiscovery()">Add Discovery</button>
+    </div>
+
+    <ul class="list-group mt-3">
+      <li class="list-group-item" *ngFor="let discovery of discoveries">
+        {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }})
+      </li>
+    </ul>
+
+    <button type="submit" class="btn btn-success mt-3">Create Mission</button>
+  </form>
+
+  <!-- Modal for adding a new planet -->
+<ng-template #addPlanetModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Add Planet</h4>
+  </div>
+  <div class="modal-body">
+    <!-- Form fields for adding a new planet -->
+    <div class="form-group">
+      <label for="planetName">Planet Name</label>
+      <input type="text" id="planetName" class="form-control" [(ngModel)]="newPlanet.name" name="planetName" required />
+    </div>
+    <div class="form-group mt-2">
+      <label for="planetType">Type</label>
+      <input type="text" id="planetType" class="form-control" [(ngModel)]="newPlanet.type" name="planetType" required />
+    </div>
+    <div class="form-group mt-2">
+      <label for="planetClimate">Climate</label>
+      <input type="text" id="planetClimate" class="form-control" [(ngModel)]="newPlanet.climate" name="planetClimate" />
+    </div>
+    <div class="form-group mt-2">
+      <label for="planetTerrain">Terrain</label>
+      <input type="text" id="planetTerrain" class="form-control" [(ngModel)]="newPlanet.terrain" name="planetTerrain" />
+    </div>
+    <div class="form-group mt-2">
+      <label for="planetPopulation">Population</label>
+      <input type="text" id="planetPopulation" class="form-control" [(ngModel)]="newPlanet.population" name="planetPopulation" />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="addPlanet()">Save Planet</button>
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+  </div>
+</ng-template>
+
+</div>
