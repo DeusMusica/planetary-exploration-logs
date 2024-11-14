@@ -37,7 +37,7 @@
             <ul>
               <li *ngFor="let discovery of mission.discoveries">
                 {{ discovery.name }}: {{ discovery.description }} ({{ discovery.location }}).
-                Type: {{ discovery.discoveryTypeName }}
+                Type: {{ discovery.discoveryTypeName }}                
                 <button class="btn btn-primary btn-sm ms-2" (click)="editDiscoveries(discovery.id)">Edit Discoveries</button>
                 <button class="btn btn-danger btn-sm" (click)="deleteDiscovery(discovery.id)">Delete</button>
               </li>
@@ -46,6 +46,7 @@
 
         <!-- Action Buttons -->
         <div class="mt-3">
+          <button class="btn btn-primary btn-sm ms-2" (click)="editMission(mission.id)">Edit Mission</button>
           <button class="btn btn-outline-success me-2" (click)="addDiscoveries(mission)">Add Discoveries</button>
           <button class="btn btn-outline-danger" (click)="deleteMission(mission.id)">Delete Mission</button>
         </div>

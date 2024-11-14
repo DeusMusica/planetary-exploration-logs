@@ -89,6 +89,11 @@ toggleMissionDetails(missionId: number): void {
     this.router.navigate(['/discovery/edit', discoveryId]);
   }
 
+  editMission(missionId: number): void {
+    // Navigate to the edit mission page, passing the mission ID as a route parameter
+    this.router.navigate(['/mission/edit', missionId]);
+  }
+
   deleteDiscovery(discoveryId: number): void {
     if (confirm('Are you sure you want to delete this discovery?')) {
       this.discoveryService.deleteDiscovery(discoveryId).subscribe({

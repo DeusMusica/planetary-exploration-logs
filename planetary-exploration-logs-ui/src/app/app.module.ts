@@ -12,6 +12,7 @@ import { CreateMissionComponent } from './pages/mission/create-mission/create-mi
 import { AddDiscoveryComponent } from './pages/discovery/add-discovery/add-discovery.component';
 import { EditDiscoveryComponent } from './pages/discovery/edit-discovery/edit-discovery.component';
 import { MissionComponent } from './pages/mission/mission.component';
+import { EditMissionComponent } from './pages/mission/edit-mission/edit-mission/edit-mission.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MissionComponent } from './pages/mission/mission.component';
     DiscoveryComponent,
     CreateMissionComponent,
     MissionComponent,
+    EditMissionComponent,
   ],
   imports: [
     BrowserModule,
